@@ -27,29 +27,25 @@ pip install -r requirements.txt
 echo "🧩 [4/4] Installing Custom Nodes..."
 cd custom_nodes
 
-# Essential Management & Video Handling
 git clone https://github.com/ltdrdata/ComfyUI-Manager.git
 git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
 
-# Kijai's Nodes (Required for NextDiffusion Wan workflows)
 git clone https://github.com/kijai/ComfyUI-WanVideoWrapper.git
 cd ComfyUI-WanVideoWrapper && pip install -r requirements.txt && cd ..
 git clone https://github.com/kijai/ComfyUI-KJNodes.git
 
-# Detection and Masking
 git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git
 cd ComfyUI-Impact-Pack && python3 install.py && cd ..
 git clone https://github.com/kijai/ComfyUI-segment-anything-2.git
 cd ComfyUI-segment-anything-2 && pip install -r requirements.txt && cd ..
 
-# ControlNet Aux for DW Pose skeleton tracking
-git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git
-cd comfyui_controlnet_aux && pip install -r requirements.txt && cd ..
+# REQUIRED for the specific yolov10m.onnx and vitpose-l-wholebody.onnx
+git clone https://github.com/kijai/ComfyUI-WanAnimatePreprocess.git
+cd ComfyUI-WanAnimatePreprocess && pip install -r requirements.txt && cd ..
 
-cd ../.. # Back to root of execution
+cd ../..
 
 echo "✅ Installation of ComfyUI and Nodes is complete!"
 echo "⏳ Now starting Model Downloads..."
 
-# Automatically trigger the model download script
 bash $(dirname "$0")/download_models.sh
