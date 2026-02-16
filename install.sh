@@ -24,6 +24,10 @@ source venv/bin/activate
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
 
+# --> NEW: Installing Triton and SageAttention for maximum speed
+echo "⚡ Installing Triton and SageAttention..."
+pip install triton sageattention
+
 echo "🧩 [4/4] Installing Custom Nodes..."
 cd custom_nodes
 
